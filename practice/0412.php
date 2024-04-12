@@ -8,8 +8,18 @@
 </head>
 
 <body>
-    <?php echo
-        11553333;
+    <?php
+    echo __FILE__;
+    echo "<br>";
+    echo __DIR__;
+    echo "<br>";
+    echo __LINE__;
+    echo "<br>";
+    echo true;
+    echo "<br>";
+    echo false;
+    echo "<br>";
+    echo false ? "true" : "false";
     ?>
 </body>
 
