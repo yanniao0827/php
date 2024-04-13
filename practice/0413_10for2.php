@@ -12,7 +12,7 @@
         <?php for ($i = 1; $i <= 9; $i++): ?>
             <tr>
                 <?php for ($j = 1; $j <= 9; $j++): ?>
-                    <td><?= sprintf('%s*%s=%s', $i, $j, $i * $j) ?></td>
+                    <td><?= sprintf('%s * %s =%s', $i, $j, $i * $j) ?></td> <!-- %s代表空洞，有三個洞代表要給入三個值 -->
                 <?php endfor; ?>
             </tr>
         <?php endfor; ?>
