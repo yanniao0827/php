@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form name="form1" onsubmit="mySubmit(event)"> <!-- onsubmit讓表單點選submit時觸發的是mySubmit函數 -->
+    <input type="number" name="a" placeholder="a">
+    <br>
+    <input type="number" name="b" placeholder="b"><br>
+    <button type="submit">送出</button>
+  </form>
+  <div id="info"></div>
+
+  <script>
+    const mySubmit = e => {
+      e.preventDefault(); // 不要讓表單以傳統的方式送出
+      const a = document.form1.a.value; //取得a欄的值
+      const b = document.form1.b.value; //取得b欄的值
+      console.log({ a, b }); //讓a,b用物件的方式列出
+
+      // 1. 建立 XHR 物件
+      const xhr = new XMLHttpRequest();
+
+    // 2. 設定事件處理器 (資料載入後觸發)，在sync中，把原本async中的事件處理器拿掉
+    //   xhr.onload = e => {
+    //   info.innerHTML = xhr.responseText; // a、b在0412_qs那個檔案結算的值傳回到 div 裡
+    // 3. open 做設定
+          xhr.open('GET', `0412_qs.php?a=${a}&b=${b}`,false); //把a跟b的值傳進0412_qs.php，false如果不輸入預設值本來就是true，代表程式預設是用非同步的方式運行
+      // 4.send 發送
+      xhr.send();
+      info.innerHTML = xhr.responseText; // 因為事件處理器拿掉了，要把回來的內容放到 div 裡
+      }
+
+
+  </script>
+</body>
+
+</html>
