@@ -12,8 +12,6 @@
     $age = isset($_GET['age']) ? intval($_GET['age']) : 0;
 
 
-    $age = isset($_GET['age']) ? intval($_GET['age']) : 0;
-
     if ($age >= 18) {
         ?>
         <div style="width:300px">
