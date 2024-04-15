@@ -1,5 +1,5 @@
 <?php
-// date_default_timezone_set('Asia/Taipei');
+// date_default_timezone_set('Asia/Taipei'); 如果再php.ini中直接改時區就不用重複設定
 echo date("Y-m-d H:i:s");
 //現在時間
 printf("<h2>%s</h2>", date("Y-m-d H:i:s", time()));
