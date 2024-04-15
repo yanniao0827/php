@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+    <pre id="info"></pre>
+
+
+
+  <script>
+
+      //fetch指讓程式去做事情，但如果要讓程式把事情做完，這時會生成一個promise類型物件，需要在後面加.then()拿到promise物件的資料
+      //如果.then()內也運行成功，會出現第二個promise類型物件，這時要再用第二個.then把程式全部運行完
+      fetch(`0415_08json.php`)
+      .then((r) => r.json())
+        .then((data) => {
+          console.log(data);
+
+          info.innerHTML = JSON.stringify(data, null, 4)
+        })
+        .catch((ex) => {
+          // 錯誤處理
+          console.log(ex);
+        });
+  </script>
+</body>
+
+</html>
