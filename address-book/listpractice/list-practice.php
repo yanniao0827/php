@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../config/pdo-connect.php';
+require __DIR__ . '/../../config/pdo-connect.php';
 
 $sql = "SELECT * FROM address_book LIMIT 3";
 
