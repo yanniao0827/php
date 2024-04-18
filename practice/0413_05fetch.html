@@ -25,12 +25,16 @@
 
       //fetch指讓程式去做事情，但如果要讓程式把事情做完，這時會生成一個promise類型物件，需要在後面加.then()拿到promise物件的資料
       //如果.then()內也運行成功，會出現第二個promise類型物件，這時要再用第二個.then把程式全部運行完
+
+      //fetch有抓取的意思，呼叫fetch後會生成一個promise類型物件，promise屬於非同步的操作，如果要把程式完整運作完成，在promise後加.then()，()內會拿到response，也就是server要回應給用戶的資料
+      //資料雖然有送回，但在這裡還是會拿不到，如果要拿到資料，要使用return讓下一個then去處理
       fetch(`0412_qs.php?a=${a}&b=${b}`)
           .then((response) => {
             if (response.ok) {
               return response.text(); // 請它以 "文字" 的格式來解析回應的資料
             }
           })
+          //如果上面的response有解析成功，就會生成另外一個promise，所以要用新的then去解析，這裡才會拿到真正的結果
           .then((txt) => {
             info.innerHTML = txt;
           });
