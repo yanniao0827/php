@@ -3,6 +3,7 @@
 require __DIR__ . '/../config/pdo-connect.php';
 
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+//如果今天要刪除的id小於1，代表根本沒東西能刪，所以就直接結束這個php然後跳回list頁面
 if ($sid < 1) {
     header('Location: list.php');
     exit;
