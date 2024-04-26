@@ -59,9 +59,8 @@ $pageName = 'add';
         </div>
     </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- Modal 成功新增資料後跳出 -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -87,6 +86,7 @@ $pageName = 'add';
     const nameField = document.form1.name;
     const emailField = document.form1.email;
 
+    // 驗證email
     function validateEmail(email) {
         const re =
             /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -102,15 +102,15 @@ $pageName = 'add';
         emailField.nextElementSibling.innerText = '';
         // TODO: 欄位資料檢查
 
-        let isPass = true;  // 表單有沒有通過檢查
+        let isPass = true; // 表單有沒有通過檢查
         if (nameField.value.length < 2) {
-            isPass = false;
+            isPass = false; //如果姓名字數小於2，讓isPass狀態變成false，並顯示以下錯誤訊息
             nameField.style.border = '1px solid red';
             nameField.nextElementSibling.innerText = '請填寫正確的姓名';
 
         }
         if (!validateEmail(emailField.value)) {
-            isPass = false;
+            isPass = false; // 如果email沒有通過驗證，讓isPass狀態變成false，並顯示以下錯誤訊息
             emailField.style.border = '1px solid red';
             emailField.nextElementSibling.innerText = '請填寫正確的 Email';
         }
@@ -121,21 +121,19 @@ $pageName = 'add';
             const fd = new FormData(document.form1); // 沒有外觀的表單物件
 
             fetch('add-api.php', {
-                method: 'POST',
-                body: fd, // Content-Type: multipart/form-data
-            }).then(r => r.json())
+                    method: 'POST',
+                    body: fd, // Content-Type: multipart/form-data
+                }).then(r => r.json())
                 .then(data => {
                     console.log(data);
                     if (data.success) {
                         myModal.show();
-                    } else {
-                    }
+                    } else {}
                 })
                 .catch(ex => console.log(ex))
         }
     };
 
     const myModal = new bootstrap.Modal('#staticBackdrop')
-
 </script>
 <?php include __DIR__ . '/parts/html-foot.php' ?>

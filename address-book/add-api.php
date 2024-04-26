@@ -25,13 +25,15 @@ if ($birthday === false) {
 
 $sql = "INSERT INTO `address_book`(
     `name`, `email`, `mobile`, `birthday`, `address`, `created_at`) VALUES (
-      ?,
-      ?,
-      ?,
-      ?,
-      ?, NOW() )";
+      ?, /* name */
+      ?, /* email */
+      ?, /* mobile */
+      ?, /* birthday */
+      ?, /* address */
+      NOW() )"; /* created_at */
 
 $stmt = $pdo->prepare($sql);
+// execute是用來將驗證好的表單資料放進資料庫
 $stmt->execute([
     $_POST['name'],
     $_POST['email'],
@@ -54,11 +56,12 @@ $stmt->execute([
 //     $_POST['birthday'],
 //     $_POST['address']
 // );
-
 // $stmt = $pdo->query($sql);
-// !!兩個驚嘆號代表轉換成布林值
-$output['success'] = !!$stmt->rowCount(); # 新增了幾筆
-$output['newId'] = $pdo->lastInsertId(); # 取得最近的新增資料的primary key
+
+# 新增了幾筆，新增資料如果成功就是加一筆，失敗就是0，兩個驚嘆號代表轉換成布林值
+$output['success'] = !!$stmt->rowCount();
+# 新增資料成功後，取得最近的一筆資料的primary key，在這裡不是用pdoStatement，而是用pdo方法中的lastInsertId()，讓我們新增的資料可以照著auto increment方式進行
+$output['newId'] = $pdo->lastInsertId();
 
 // 讓送出的表單資料以json方式回傳如果沒有這個echo，會出現Unexpected end of JSON input這個錯誤
 echo json_encode($output);
