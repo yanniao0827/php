@@ -1,6 +1,9 @@
 <?php
 
 require __DIR__ . '/../config/pdo-connect.php';
+// 這個title指的是一般html中的document，在這個列表頁面我們把document命名成通訊錄列表
+$title = "通訊錄列表";
+$pageName = 'list';
 
 $perPage = 20; //每頁最多要放幾筆資料
 
