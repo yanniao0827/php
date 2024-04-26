@@ -56,32 +56,44 @@ echo json_encode([
         <div class="col">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
+                    <!-- 回到第一頁 -->
                     <li class="page-item ">
                         <a class="page-link" href="#">
                             <i class="fa-solid fa-angles-left"></i>
                         </a>
                     </li>
+                    <!-- 回到第一頁結束 -->
+
+                    <!-- 向前一頁 -->
                     <li class="page-item ">
                         <a class="page-link" href="#">
                             <i class="fa-solid fa-angle-left"></i>
                         </a>
                     </li>
+                    <!-- 向前一頁結束 -->
+
                     <?php for ($i = $page - 5; $i <= $page + 5; $i++):
                         if ($i >= 1 and $i <= $totalPages): ?>
                             <li class="page-item <?= $page == $i ? 'active' : '' ?>">
                                 <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
                             </li>
                         <?php endif; endfor; ?>
+
+                    <!-- 向後一頁 -->
                     <li class="page-item ">
                         <a class="page-link" href="#">
                             <i class="fa-solid fa-angle-right"></i>
                         </a>
                     </li>
+                    <!-- 向後一頁 -->
+
+                    <!-- 到最後一頁 -->
                     <li class="page-item ">
                         <a class="page-link" href="#">
                             <i class="fa-solid fa-angles-right"></i>
                         </a>
                     </li>
+                    <!-- 到最後一頁結束 -->
                 </ul>
             </nav>
         </div>
