@@ -8,6 +8,7 @@ $pageName = 'list';
 $perPage = 20; //每頁最多要放幾筆資料
 
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1; //如果page沒有設定，就列出第一頁資料
+// 如果輸入的page<1，就跳到第一頁
 if ($page < 1) {
     header('Location: ?page=1');
     exit;
@@ -56,6 +57,7 @@ echo json_encode([
 
 <div class="container">
     <div class="row">
+        <!-- 分頁按鈕回家作業 -->
         <div class="col">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -74,12 +76,13 @@ echo json_encode([
                         </a>
                     </li>
                     <!-- 上一頁結束 -->
-                    <?php for ($i = $page - 5; $i <= $page + 5; $i++):
-                        if ($i >= 1 and $i <= $totalPages): ?>
+                    <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
+                        if ($i >= 1 and $i <= $totalPages) : ?>
                             <li class="page-item <?= $page == $i ? 'active' : '' ?>">
                                 <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
                             </li>
-                        <?php endif; endfor; ?>
+                    <?php endif;
+                    endfor; ?>
                     <!-- 下一頁 -->
                     <li class="page-item ">
                         <a class="page-link" href="#">
@@ -113,7 +116,7 @@ echo json_encode([
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($rows as $r): ?>
+                    <?php foreach ($rows as $r) : ?>
                         <tr>
                             <td><a href="delete.php?sid=<?= $r['sid'] ?>">
                                     <i class="fa-solid fa-trash"></i>
