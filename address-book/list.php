@@ -67,67 +67,73 @@ echo json_encode([
                     </li>
                     <!-- 回到第一頁結束 -->
 
-                    <!-- 向前一頁 -->
+                    <!-- 上一頁 -->
                     <li class="page-item ">
                         <a class="page-link" href="#">
                             <i class="fa-solid fa-angle-left"></i>
                         </a>
                     </li>
-                    <!-- 向前一頁結束 -->
-
+                    <!-- 上一頁結束 -->
                     <?php for ($i = $page - 5; $i <= $page + 5; $i++):
                         if ($i >= 1 and $i <= $totalPages): ?>
                             <li class="page-item <?= $page == $i ? 'active' : '' ?>">
                                 <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
                             </li>
                         <?php endif; endfor; ?>
-
-                    <!-- 向後一頁 -->
+                    <!-- 下一頁 -->
                     <li class="page-item ">
                         <a class="page-link" href="#">
                             <i class="fa-solid fa-angle-right"></i>
                         </a>
                     </li>
-                    <!-- 向後一頁 -->
-
-                    <!-- 到最後一頁 -->
+                    <!-- 下一頁結束 -->
                     <li class="page-item ">
                         <a class="page-link" href="#">
                             <i class="fa-solid fa-angles-right"></i>
                         </a>
                     </li>
-                    <!-- 到最後一頁結束 -->
                 </ul>
             </nav>
         </div>
     </div>
+
     <div class="row">
         <div class="col">
-            <table class="table">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th scope="col"><i class="fa-solid fa-trash"></i></th>
                         <th scope="col">#</th>
                         <th scope="col">姓名</th>
                         <th scope="col">Email</th>
                         <th scope="col">手機</th>
                         <th scope="col">生日</th>
                         <th scope="col">地址</th>
+                        <th scope="col"><i class="fa-solid fa-pen-to-square"></i></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($rows as $r): ?>
                         <tr>
+                            <td><a href="delete.php?sid=<?= $r['sid'] ?>">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a></td>
                             <td><?= $r['sid'] ?></td>
                             <td><?= $r['name'] ?></td>
                             <td><?= $r['email'] ?></td>
                             <td><?= $r['mobile'] ?></td>
                             <td><?= $r['birthday'] ?></td>
-                            <td><?= $r['address'] ?></td>
+                            <td><?= htmlentities($r['address']) ?></td>
+                            <td>
+                                <a href="edit.php?sid=<?= $r['sid'] ?>">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
-                    <tr>
                 </tbody>
             </table>
+
         </div>
     </div>
 </div>
