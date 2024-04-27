@@ -1,6 +1,6 @@
 <?php
 
-$pw = '12222';
-$hash = '$2y$10$B1.WhdzNIcmB9FPQMO3hO.v4wC8E3j28SzlxmJj3sbPe6ajaLJbLu';
+$pw = '1234';
+$hash = '$2y$10$VmqLLy0eq0gb9NDvmlTmmeX2Wqrmm0e.7GP8QTB/lfSPihEaNYYlS';
 
 var_dump(password_verify($pw, $hash));

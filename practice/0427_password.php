@@ -1,5 +1,5 @@
 <?php
 
-$pw = 1122222;
+$pw = 1234;
 
 echo password_hash($pw, PASSWORD_BCRYPT);
