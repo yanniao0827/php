@@ -76,12 +76,12 @@ echo json_encode([
                         </a>
                     </li>
                     <!-- 上一頁結束 -->
-                    <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
-                        if ($i >= 1 and $i <= $totalPages) : ?>
+                    <?php for ($i = $page - 5; $i <= $page + 5; $i++):
+                        if ($i >= 1 and $i <= $totalPages): ?>
                             <li class="page-item <?= $page == $i ? 'active' : '' ?>">
                                 <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
                             </li>
-                    <?php endif;
+                        <?php endif;
                     endfor; ?>
                     <!-- 下一頁 -->
                     <li class="page-item ">
@@ -116,9 +116,9 @@ echo json_encode([
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($rows as $r) : ?>
+                    <?php foreach ($rows as $r): ?>
                         <tr>
-                            <td><a href="delete.php?sid=<?= $r['sid'] ?>">
+                            <td><a href="javascript:deleteOne(<?= $r['sid'] ?>)">
                                     <i class="fa-solid fa-trash"></i>
                                 </a></td>
                             <td><?= $r['sid'] ?></td>
@@ -142,4 +142,11 @@ echo json_encode([
 </div>
 
 <?php include __DIR__ . '/parts/scripts.php' ?>
+<script>
+    const deleteOne = (sid) => {
+        if (confirm(`是否要刪除編號為${sid}的資料?`)) {
+            location.href = `delete.php?sid=${sid}`;
+        }
+    }
+</script>
 <?php include __DIR__ . '/parts/html-foot.php' ?>
