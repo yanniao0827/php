@@ -27,13 +27,29 @@ if (!isset($pageName))
                     <li class="nav-item">
                         <a class="nav-link <?= $pageName == 'add' ? 'active' : '' ?>" href="add.php">新增</a>
                     </li>
-                    <ul class="navbar-nav mb-2 mb-lg-0">
+                </ul>
+
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <?php if (isset($_SESSION['admin'])): ?>
                         <li class="nav-item">
-                            <a class="nav-link <?= $pageName == 'list' ? 'active' : '' ?>" href="list.php">登入</a>
+                            <a class="nav-link"><?= $_SESSION['admin']['nickname'] ?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?= $pageName == 'add' ? 'active' : '' ?>" href="add.php">註冊</a>
+                            <a class="nav-link" href="logout.php">登出</a>
                         </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?= $pageName == 'login' ? 'active' : '' ?>" href="login.php">登入</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?= $pageName == 'register' ? 'active' : '' ?>" href="register.php">註冊</a>
+                        </li>
+                    <?php endif ?>
+
+
+
+                </ul>
+
             </div>
         </div>
     </nav>
