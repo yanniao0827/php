@@ -88,7 +88,7 @@ if (empty($row)) {
         </div>
     </div>
 </div>
-<!-- Modal 成功新增資料後跳出 -->
+<!-- Modal 成功編輯資料後跳出 -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -100,6 +100,29 @@ if (empty($row)) {
             <div class="modal-body">
                 <div class="alert alert-success" role="alert">
                     資料修改成功
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" onclick="location.href='list.php'">到列表頁</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">繼續修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 編輯資料失敗後跳出 -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">修改失敗</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert">
+                    資料修改失敗
                 </div>
             </div>
             <div class="modal-footer">
@@ -159,12 +182,14 @@ if (empty($row)) {
                     if (data.success) {
                         myModal.show();
                     } else {
+                        myModal2.show();
                     }
                 })
                 .catch(ex => console.log(ex))
         }
     };
 
-    const myModal = new bootstrap.Modal('#staticBackdrop')
+    const myModal = new bootstrap.Modal('#staticBackdrop');
+    const myModal2 = new bootstrap.Modal('#staticBackdrop2');
 </script>
 <?php include __DIR__ . '/parts/html-foot.php' ?>
