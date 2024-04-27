@@ -1,5 +1,7 @@
 <?php
-
+if (!isset($_SESSION)) {
+    session_start();
+}
 $title = "新增通訊錄";
 $pageName = 'add';
 
@@ -60,7 +62,8 @@ $pageName = 'add';
     </div>
 </div>
 <!-- Modal 成功新增資料後跳出 -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -121,14 +124,14 @@ $pageName = 'add';
             const fd = new FormData(document.form1); // 沒有外觀的表單物件
 
             fetch('add-api.php', {
-                    method: 'POST',
-                    body: fd, // Content-Type: multipart/form-data
-                }).then(r => r.json())
+                method: 'POST',
+                body: fd, // Content-Type: multipart/form-data
+            }).then(r => r.json())
                 .then(data => {
                     console.log(data);
                     if (data.success) {
                         myModal.show();
-                    } else {}
+                    } else { }
                 })
                 .catch(ex => console.log(ex))
         }
