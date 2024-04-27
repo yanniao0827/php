@@ -1,5 +1,6 @@
 <?php
 $title = "編輯通訊錄";
+require __DIR__ . '/admin_required.php';
 require __DIR__ . '/../config/pdo-connect.php';
 
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;

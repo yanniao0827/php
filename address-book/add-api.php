@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../config/pdo-connect.php';
-
+require __DIR__ . '/admin_required.php';
 header('Content-Type: application/json');
 // 正確驗證語法
 $output = [

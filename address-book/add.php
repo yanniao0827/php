@@ -2,6 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+require __DIR__ . '/admin_required.php';
 $title = "新增通訊錄";
 $pageName = 'add';
 
